@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>肌群地圖 — 互動式人體肌群訓練推薦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">💪</div>
+        <h1>MuscleMap</h1>
+      </div>
+      <span class="header-subtitle">點擊肌群 → 查看動作 → 了解肌群參與</span>
+    </div>
+  </header>
+
+  <!-- ===== Main App ===== -->
+  <main class="app-container">
+
+    <!-- Left: Body Map -->
+    <section class="body-map-panel">
+      <div class="view-label">正面 Front View</div>
+      <div class="body-map-wrapper">
+        <svg
+          class="muscle-map-svg"
+          viewBox="0 0 400 880"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Interactive front-view human body muscle map"
+        >
+          <defs>
+            <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#252535" />
+              <stop offset="100%" stop-color="#1e1e2a" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- ===== Non-interactive body parts ===== -->
+
+          <!-- Head -->
+          <ellipse class="body-part" cx="200" cy="55" rx="32" ry="38" />
+
+          <!-- Neck -->
+          <rect class="body-part" x="186" y="90" width="28" height="30" rx="6" />
+
+          <!-- Hands -->
+          <ellipse class="body-part" cx="72" cy="458" rx="13" ry="18" />
+          <ellipse class="body-part" cx="328" cy="458" rx="13" ry="18" />
+
+          <!-- Feet -->
+          <path class="body-part" d="M155,790 Q150,810 152,825 Q158,838 180,838 Q188,835 190,820 L190,790 Z" />
+          <path class="body-part" d="M245,790 Q250,810 248,825 Q242,838 220,838 Q212,835 210,820 L210,790 Z" />
+
+          <!-- Knee caps -->
+          <ellipse class="body-part" cx="172" cy="590" rx="18" ry="14" />
+          <ellipse class="body-part" cx="228" cy="590" rx="18" ry="14" />
+
+          <!-- ===== MUSCLE GROUPS (clickable) ===== -->
+
+          <!-- === Trapezius (Left) === -->
+          <path
+            class="muscle-group"
+            data-muscle="traps"
+            d="M186,108 Q178,110 162,120 Q142,132 132,144
+               L148,148 Q158,138 170,128 Q180,120 186,118 Z"
+          />
+          <!-- === Trapezius (Right) === -->
+          <path
+            class="muscle-group"
+            data-muscle="traps"
+            d="M214,108 Q222,110 238,120 Q258,132 268,144
+               L252,148 Q242,138 230,128 Q220,120 214,118 Z"
+          />
+
+          <!-- === Left Deltoid === -->
+          <path
+            class="muscle-group"
+            data-muscle="deltoids"
+            d="M132,144 Q118,148 110,160 Q104,175 106,192
+               Q108,200 116,204
+               L130,195 Q126,178 128,164 Q130,152 136,148 Z"
+          />
+          <!-- === Right Deltoid === -->
+          <path
+            class="muscle-group"
+            data-muscle="deltoids"
+            d="M268,144 Q282,148 290,160 Q296,175 294,192
+               Q292,200 284,204
+               L270,195 Q274,178 272,164 Q270,152 264,148 Z"
+          />
+
+          <!-- === Left Pectoral === -->
+          <path
+            class="muscle-group"
+            data-muscle="chest"
+            d="M186,145 Q182,142 170,142 Q155,144 148,148
+               L130,195 Q128,210 132,225
+               Q138,240 150,248 Q165,255 180,258
+               Q186,258 190,256 L190,245
+               Q186,240 186,220 Q186,190 186,165 Z"
+          />
+          <!-- === Right Pectoral === -->
+          <path
+            class="muscle-group"
+            data-muscle="chest"
+            d="M214,145 Q218,142 230,142 Q245,144 252,148
+               L270,195 Q272,210 268,225
+               Q262,240 250,248 Q235,255 220,258
+               Q214,258 210,256 L210,245
+               Q214,240 214,220 Q214,190 214,165 Z"
+          />
+
+          <!-- === Left Bicep === -->
+          <path
+            class="muscle-group"
+            data-muscle="biceps"
+            d="M116,204 Q110,210 106,225 Q100,250 96,275
+               Q93,295 92,310 Q92,320 94,328
+               L108,325 Q108,315 110,300 Q112,280 116,260
+               Q120,240 124,220 L130,195 Z"
+          />
+          <!-- === Right Bicep === -->
+          <path
+            class="muscle-group"
+            data-muscle="biceps"
+            d="M284,204 Q290,210 294,225 Q300,250 304,275
+               Q307,295 308,310 Q308,320 306,328
+               L292,325 Q292,315 290,300 Q288,280 284,260
+               Q280,240 276,220 L270,195 Z"
+          />
+
+          <!-- === Left Forearm === -->
+          <path
+            class="muscle-group"
+            data-muscle="forearms"
+            d="M94,328 Q90,335 88,350 Q84,375 82,400
+               Q80,420 80,435 Q80,442 82,445
+               L96,442 Q95,430 95,415 Q96,395 98,375
+               Q100,355 104,338 L108,325 Z"
+          />
+          <!-- === Right Forearm === -->
+          <path
+            class="muscle-group"
+            data-muscle="forearms"
+            d="M306,328 Q310,335 312,350 Q316,375 318,400
+               Q320,420 320,435 Q320,442 318,445
+               L304,442 Q305,430 305,415 Q304,395 302,375
+               Q300,355 296,338 L292,325 Z"
+          />
+
+          <!-- === Left Obliques / Serratus === -->
+          <path
+            class="muscle-group"
+            data-muscle="obliques"
+            d="M132,225 Q128,235 128,250 Q130,270 132,290
+               Q134,310 136,330 Q138,348 142,362
+               Q145,372 148,378
+               L160,376 Q158,368 156,355 Q153,340 152,320
+               Q150,295 150,272 Q150,260 152,250
+               L150,248 Q140,242 134,232 Z"
+          />
+          <!-- === Right Obliques / Serratus === -->
+          <path
+            class="muscle-group"
+            data-muscle="obliques"
+            d="M268,225 Q272,235 272,250 Q270,270 268,290
+               Q266,310 264,330 Q262,348 258,362
+               Q255,372 252,378
+               L240,376 Q242,368 244,355 Q247,340 248,320
+               Q250,295 250,272 Q250,260 248,250
+               L250,248 Q260,242 266,232 Z"
+          />
+
+          <!-- === Abs (Rectus Abdominis) === -->
+          <path
+            class="muscle-group"
+            data-muscle="abs"
+            d="M190,256 Q190,248 192,245 L192,242 Q196,238 200,238 Q204,238 208,242
+               L208,245 Q210,248 210,256
+               L210,290 Q210,320 210,350
+               Q210,370 208,385 Q206,395 204,400
+               Q202,405 200,408 Q198,405 196,400
+               Q194,395 192,385 Q190,370 190,350
+               Q190,320 190,290 Z"
+          />
+          <!-- Abs horizontal lines (aesthetic) -->
+          <line class="body-part" x1="192" y1="270" x2="208" y2="270" stroke-width="0.5" opacity="0.3" />
+          <line class="body-part" x1="192" y1="295" x2="208" y2="295" stroke-width="0.5" opacity="0.3" />
+          <line class="body-part" x1="192" y1="320" x2="208" y2="320" stroke-width="0.5" opacity="0.3" />
+          <line class="body-part" x1="193" y1="345" x2="207" y2="345" stroke-width="0.5" opacity="0.3" />
+          <line class="body-part" x1="194" y1="368" x2="206" y2="368" stroke-width="0.5" opacity="0.3" />
+
+          <!-- === Left Quadriceps === -->
+          <path
+            class="muscle-group"
+            data-muscle="quads"
+            d="M148,378 Q144,390 142,405 Q140,425 140,445
+               Q140,470 142,495 Q144,520 148,545
+               Q150,560 155,575 Q158,582 160,585
+               L172,582 Q170,575 168,565 Q165,548 163,530
+               Q160,505 160,480 Q160,455 162,435
+               Q164,418 166,405 Q168,395 170,388
+               L168,380 Q160,377 152,377 Z"
+          />
+          <!-- === Right Quadriceps === -->
+          <path
+            class="muscle-group"
+            data-muscle="quads"
+            d="M252,378 Q256,390 258,405 Q260,425 260,445
+               Q260,470 258,495 Q256,520 252,545
+               Q250,560 245,575 Q242,582 240,585
+               L228,582 Q230,575 232,565 Q235,548 237,530
+               Q240,505 240,480 Q240,455 238,435
+               Q236,418 234,405 Q232,395 230,388
+               L232,380 Q240,377 248,377 Z"
+          />
+
+          <!-- === Left Adductors (Inner Thigh) === -->
+          <path
+            class="muscle-group"
+            data-muscle="adductors"
+            d="M170,388 Q175,400 178,415 Q182,435 185,460
+               Q188,485 190,510 Q192,530 192,545
+               Q192,560 190,575 L185,585
+               L172,582 Q174,570 175,555 Q175,535 172,510
+               Q170,485 167,460 Q164,438 162,420
+               Q160,405 160,395 Q162,385 168,380 Z"
+          />
+          <!-- === Right Adductors (Inner Thigh) === -->
+          <path
+            class="muscle-group"
+            data-muscle="adductors"
+            d="M230,388 Q225,400 222,415 Q218,435 215,460
+               Q212,485 210,510 Q208,530 208,545
+               Q208,560 210,575 L215,585
+               L228,582 Q226,570 225,555 Q225,535 228,510
+               Q230,485 233,460 Q236,438 238,420
+               Q240,405 240,395 Q238,385 232,380 Z"
+          />
+
+          <!-- === Left Tibialis / Calf (front) === -->
+          <path
+            class="muscle-group"
+            data-muscle="tibialis"
+            d="M160,600 Q156,615 154,640 Q152,670 152,700
+               Q152,725 154,750 Q155,770 156,785
+               L172,788 Q172,775 172,760 Q172,735 173,710
+               Q174,680 176,655 Q178,635 180,620
+               L182,605 Q175,598 168,598 Z"
+          />
+          <!-- === Right Tibialis / Calf (front) === -->
+          <path
+            class="muscle-group"
+            data-muscle="tibialis"
+            d="M240,600 Q244,615 246,640 Q248,670 248,700
+               Q248,725 246,750 Q245,770 244,785
+               L228,788 Q228,775 228,760 Q228,735 227,710
+               Q226,680 224,655 Q222,635 220,620
+               L218,605 Q225,598 232,598 Z"
+          />
+
+          <!-- ===== Percentage labels (hidden by default, shown on exercise select) ===== -->
+          <!-- These are positioned dynamically by JavaScript -->
+
+        </svg>
+
+        <!-- Instructions tooltip -->
+        <div class="instructions" id="instructions">
+          <p>👆 點擊人體肌群開始探索</p>
+        </div>
+
+        <!-- Color legend -->
+        <div class="legend" id="legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: rgba(220, 38, 38, 0.95);"></div>
+            <span>主肌群 ≥80%</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: rgba(248, 113, 113, 0.80);"></div>
+            <span>次肌群 40-79%</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: rgba(254, 202, 202, 0.55);"></div>
+            <span>輔助 &lt;40%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Exercise Panel -->
+    <aside class="exercise-panel" id="exercisePanel">
+      <button class="back-btn" id="backBtn" title="返回肌群選擇">
+        ← 返回肌群選擇
+      </button>
+
+      <!-- Placeholder when no muscle selected -->
+      <div class="placeholder-state" id="placeholder">
+        <div class="placeholder-icon">🏋️</div>
+        <h3>選擇一個肌群</h3>
+        <p>在左側人體圖上點擊任意肌群部位，即可查看相關的訓練動作與肌群參與比例。</p>
+      </div>
+
+      <!-- Muscle info header (hidden by default) -->
+      <div class="panel-header" id="muscleInfo" style="display: none;">
+        <h2>
+          <span class="muscle-name" id="muscleName"></span>
+          <span id="muscleNameEn" style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted); margin-left: 0.5rem;"></span>
+        </h2>
+        <p id="muscleSubtitle">點擊下方動作查看肌群參與分析</p>
+        <div class="sub-groups" id="subGroups"></div>
+      </div>
+
+      <!-- Exercise list (populated by JS) -->
+      <div class="exercise-list" id="exerciseList"></div>
+    </aside>
+
+  </main>
+
+  <script src="js/muscleData.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
